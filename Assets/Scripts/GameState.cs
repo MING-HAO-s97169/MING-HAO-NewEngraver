@@ -1,5 +1,23 @@
 using UnityEngine;
 
+public class NewTurnPhase : IGameState
+{
+    public void EnterState(GameManager gameManager)    //進入狀態時
+    {
+        Debug.Log("回合開始");
+    }
+    public void UpdateState(GameManager gameManager)   //持續狀態時
+    {
+        if (gameManager.HasPhaseEnd == true)
+        {
+            gameManager.ChangeState(new DrawPhase());
+        }
+    }
+    public void ExitState(GameManager gameManager)     //離開狀態時 
+    {
+        
+    }
+}
 public class DrawPhase : IGameState
 {
     public void EnterState(GameManager gameManager)    //進入狀態時
@@ -8,7 +26,7 @@ public class DrawPhase : IGameState
     }
     public void UpdateState(GameManager gameManager)   //持續狀態時
     {
-        if (gameManager.HasPhaseEnd())
+        if (gameManager.HasPhaseEnd == true)
         {
             gameManager.ChangeState(new ReadyPhase());
         }
@@ -26,7 +44,7 @@ public class ReadyPhase : IGameState
     }
     public void UpdateState(GameManager gameManager)   //持續狀態時
     {
-        if (gameManager.HasPhaseEnd())
+        if (gameManager.HasPhaseEnd == true)
         {
             gameManager.ChangeState(new MovePhase());
         }
@@ -44,7 +62,7 @@ public class MovePhase : IGameState
     }
     public void UpdateState(GameManager gameManager)   //持續狀態時
     {
-        if (gameManager.HasPhaseEnd())
+        if (gameManager.HasPhaseEnd == true)
         {
             gameManager.ChangeState(new AttackPhase());
         }
@@ -62,7 +80,7 @@ public class AttackPhase : IGameState
     }
     public void UpdateState(GameManager gameManager)   //持續狀態時
     {
-        if (gameManager.HasPhaseEnd())
+        if (gameManager.HasPhaseEnd == true)
         {
             gameManager.ChangeState(new ResultPhase());
         }
@@ -80,7 +98,7 @@ public class ResultPhase : IGameState
     }
     public void UpdateState(GameManager gameManager)   //持續狀態時
     {
-        if (gameManager.HasPhaseEnd())
+        if (gameManager.HasPhaseEnd == true)
         {
             gameManager.ChangeState(new EndPhase());
         }
@@ -98,7 +116,10 @@ public class EndPhase : IGameState
     }
     public void UpdateState(GameManager gameManager)   //持續狀態時
     {
-
+        if (gameManager.HasPhaseEnd == true)
+        {
+            gameManager.ChangeState(new NewTurnPhase());
+        }
     }
     public void ExitState(GameManager gameManager)     //離開狀態時 
     {
