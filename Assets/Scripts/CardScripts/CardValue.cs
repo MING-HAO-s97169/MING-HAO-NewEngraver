@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class CardValue :MonoBehaviour
 {
+    [Header("CardValue")]
+    public int cardvalue;
+    public int maintype;
+    public int blacktype;
+    public int graytype;
+
     [Header("CardPart")]
     public GameObject Cardfront;
     public GameObject Cardback;
@@ -16,7 +22,13 @@ public class CardValue :MonoBehaviour
     //public TextMeshProUGUI CardDownValueText;
     public Image Resultimage;
     public Image Interactableimage;
+    public Sprite[] cardicon;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        var cardicons = Resources.LoadAll<Sprite>("Icon/CardIcon");
+        cardicon = cardicons;
+    }
     void Start()
     {
         
