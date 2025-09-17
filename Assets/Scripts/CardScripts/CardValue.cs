@@ -21,7 +21,6 @@ public class CardValue :MonoBehaviour
     //public TextMeshProUGUI CardUpValueText;
     //public TextMeshProUGUI CardDownValueText;
     public Image Resultimage;
-    public Image Interactableimage;
     public Sprite[] cardicon;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
